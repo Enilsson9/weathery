@@ -2,34 +2,29 @@
 
 <div class="jumbotron">
     <?php if (isset($_GET["ip"])) : ?>
+        <h2><?= $weather[0]["timezone"]?></h2>
+        <div id="map" class="map"></div>
         <table class="table table-striped">
             <?php if ($currentIp !== null) : ?>
-            <h1><?= $weather['timezone'] ?></h1>
-
-            <div id="map" class="map"></div>
-
-            <h3>Weather from <?= $chosenDate ?> </h3>
-
-            <thead class="thead-light">
+            <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Details</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Temperature (F)</th>
                 </tr>
             </thead>
             <tbody>
-
+                <?php foreach ($weather as $key => $value) : ?>
                 <tr>
-                  <th scope="row">Summary</th>
-                  <td><?= $weather['currently']['summary'] ?></td>
+                    <th scope="row"><?= $key ?></th>
+                    <td><?= gmdate("Y-m-d", $value["currently"]["time"]) ?></td>
+                    <td><?= $value["currently"]["summary"] ?></td>
+                    <td><?= $value["currently"]["temperature"] ?></td>
                 </tr>
-
-                <tr>
-                  <th scope="row">Temperature (Fahrenheit)</th>
-                  <td><?= $weather['currently']['temperature'] ?></td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
-
             <?php elseif ($currentIp === null) : ?>
                 <div class="alert alert-danger" role="alert">
                      Your IP address is not valid
@@ -60,15 +55,24 @@
     <?php if (!isset($_GET["ip"])) : ?>
         <form class="form-signin" method="get" action="">
             <div class="alert alert-primary" role="alert">
-              Get current weather, future weather (up to 7 days) or previous weather (up to 30 days ago).
+              Get current weather with future weather (up to 7 days) or with previous weather (up to 30 days ago).
             </div>
 
-            <div class="form-group">
-                    <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" placeholder="Your IP address here" required>
+            <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" placeholder="Your IP address here" required>
 
-                    <input class ="form-control" type="date" name="date" value="<?= $today?>" min="<?= $oneMonthAgo ?>" max="<?= $oneWeekLater ?>" required>
-
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="time" id="exampleRadios1" value="past" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Past (30 days ago)
+              </label>
             </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="time" id="exampleRadios2" value="future">
+              <label class="form-check-label" for="exampleRadios2">
+                Future (7 days ahead)
+              </label>
+            </div>
+
             <button class="btn btn-primary btn-lg btn-block"  type="submit">Check weather</button>
         </form>
 

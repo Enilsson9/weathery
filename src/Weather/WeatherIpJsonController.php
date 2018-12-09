@@ -22,10 +22,14 @@ class WeatherIpJsonController extends WeatherIpController implements ContainerIn
 {
     use ContainerInjectableTrait;
 
+    /**
+     * @var string $db a sample member variable that gets initialised
+     */
     private $ipAddress;
+    private $time;
     private $object;
     private $requester;
-    private $date;
+
 
     /**
      * Display the view
@@ -41,11 +45,7 @@ class WeatherIpJsonController extends WeatherIpController implements ContainerIn
         $this->requester = $this->di->get("requester");
 
         $this->ipAddress = $request->getGet("ip");
-        $this->date = $request->getGet("date");
-
-        $today = date('Y-m-d');
-        $oneMonthAgo = gmdate("Y-m-d", time() - (30 * 24 * 60 * 60));
-        $oneWeekLater = gmdate("Y-m-d", time() + (7 * 24 * 60 * 60));
+        $this->time = $request->getGet("time");
 
         $currentIp = $this->ipAddress;
         $this->object = new WeatherIp();
@@ -55,23 +55,36 @@ class WeatherIpJsonController extends WeatherIpController implements ContainerIn
         $accessKey  = '49a95e2b98f16776978bbf2d3097c542';
         $details = $this->requester->curlJson('http://api.ipstack.com/'.$currentIp.'?access_key='.$accessKey);
 
-        $accessKey  = '6ff1debe5cff84d291f5345bd079fd90';
-        $unixDate = strtotime($this->date);
-        #get weather
-        $weather = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixDate.'?exclude=minutely,hourly,daily,flags');
+        $accessKey  = '29b7a65dbbc991295815b55e7a37f93b';
+        $weather = [];
+        $multiRequests = [];
 
-        if ($this->date < $oneMonthAgo || $this->date > $oneWeekLater) {
-            $weather = null;
+        #future weather
+        if ($this->time === "future") {
+            for ($i=0; $i < 7; $i++) {
+                $unixTime = time() + ($i * 24 * 60 * 60);
+                $multiRequests[] = 'https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixTime.'?exclude=minutely,hourly,daily,flags';
+            }
+        }
+
+        #previous weather
+        if ($this->time === "past") {
+            for ($i=0; $i < 30; $i++) {
+                $unixTime = time() - ($i * 24 * 60 * 60);
+                $multiRequests[] = 'https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixTime.'?exclude=minutely,hourly,daily,flags';
+            }
+        }
+
+
+        $weather = $this->requester->multiRequest($multiRequests);
+
+        foreach ($weather as $key => $value) {
+            $weather[$key] = json_decode(stripslashes($value), true);
         }
 
         $data["details"] = $details;
         $data["weather"] = $weather;
         $data["currentIp"] = $currentIp;
-
-        $data["today"] = $today;
-        $data["oneMonthAgo"] = $oneMonthAgo;
-        $data["oneWeekLater"] = $oneWeekLater;
-        $data["chosenDate"] = $this->date;
 
         $page->add("anax/v2/weather/json", $data);
 
