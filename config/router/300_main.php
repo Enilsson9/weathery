@@ -6,16 +6,6 @@
  return [
      "routes" => [
          [
-             "info" => "Validera IP adresser",
-             "mount" => "validate",
-             "handler" => "\Edward\Validate\ValidateIpController",
-         ],
-         [
-             "info" => "Validera IP adresser (JSON)",
-             "mount" => "json",
-             "handler" => "\Edward\Validate\ValidateIpJsonController",
-         ],
-         [
              "info" => "Weather IP",
              "mount" => "weather",
              "handler" => "\Edward\Weather\WeatherIpController",

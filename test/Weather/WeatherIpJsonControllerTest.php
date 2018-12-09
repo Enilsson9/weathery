@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test the SampleJsonController.
  */
-class WeatherIpControllerTest extends TestCase
+class WeatherIpJsonControllerTest extends TestCase
 {
 
     // Create the di container.
