@@ -56,11 +56,25 @@ class WeatherIpController implements ContainerInjectableInterface
 
         $accessKey  = '49a95e2b98f16776978bbf2d3097c542';
         $details = $this->requester->curlJson('http://api.ipstack.com/'.$currentIp.'?access_key='.$accessKey);
+        $weather = $this->multiCurlJson($details);
 
+        $data["details"] = $details;
+        $data["weather"] = $weather;
+        $data["currentIp"] = $currentIp;
+
+
+        $page->add("anax/v2/weather/index", $data);
+
+        return $page->render([
+            "title" => $title,
+        ]);
+    }
+
+    public function multiCurlJson($details)
+    {
         $accessKey  = '29b7a65dbbc991295815b55e7a37f93b';
-        $weather = [];
-        $multiRequests = [];
 
+        $multiRequests = [];
         #future weather
         if ($this->time === "future") {
             for ($i=0; $i < 7; $i++) {
@@ -84,15 +98,6 @@ class WeatherIpController implements ContainerInjectableInterface
             $weather[$key] = json_decode(stripslashes($value), true);
         }
 
-        $data["details"] = $details;
-        $data["weather"] = $weather;
-        $data["currentIp"] = $currentIp;
-
-
-        $page->add("anax/v2/weather/index", $data);
-
-        return $page->render([
-            "title" => $title,
-        ]);
+        return $weather;
     }
 }
