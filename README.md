@@ -1,8 +1,8 @@
-Anax Weather Report module (weathery)
+Anax Weather Module (weathery)
 ==================================
 
 
-You can use this module, together with an Anax installation, to enable a scaffolded REM server, useful for test, development and prototyping.
+You can use this module, together with an Anax installation, to enable a scaffolded Weather report.
 
 
 Table of content
@@ -49,7 +49,7 @@ You need a Anax installation, before you can use this module. You can create a s
 Scaffold a sample Anax installation `anax-site-develop` into the directory `rem`.
 
 ```
-$ anax create rem anax-site-develop
+$ anax create weathery anax-site-develop
 $ cd weathery
 ```
 
@@ -73,5 +73,5 @@ This software carries a MIT license. See [LICENSE.txt](LICENSE.txt) for details.
 
 ```
  .  
-..:  Copyright (c) 2017 - 2018 Edward Nilsson (edward@nilsson.gt)
+..:  Copyright (c) 2018 Edward Nilsson (edward@nilsson.gt)
 ```
