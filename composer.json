@@ -1,6 +1,6 @@
 {
     "name" : "edward/weathery",
-    "description": "A me page for the ramverk1 course.",
+    "description": "Module for anax",
     "license": "MIT",
     "minimum-stability": "beta",
     "prefer-stable": true,

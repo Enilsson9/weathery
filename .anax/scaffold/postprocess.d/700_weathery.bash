@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 #
-# anax/remserver
+# edward/weathery
 #
 # Integrate the REM server onto an existing anax installation.
 #
 
-# Copy the configuration files
-rsync -av vendor/anax/remserver/config ./
-
-# Copy the documentation
-rsync -av vendor/anax/remserver/content/index.md ./content/remserver-api.md
+#copy config
+rsync -av vendor/edward/weathery/config/* config/
+#copy view
+rsync -av vendor/edward/weathery/view/anax/v2/* view/anax/v2/
+#copy src
+rsync -av vendor/edward/weathery/src/* src/
+#copy test
+rsync -av vendor/edward/weathery/test/* test/

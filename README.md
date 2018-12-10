@@ -53,7 +53,7 @@ $ anax create weathery anax-site-develop
 $ cd weathery
 ```
 
-Point your webserver to `rem/htdocs` and Anax should display a Home-page.
+Point your webserver to `weathery/htdocs` and Anax should display a Home-page.
 
 
 
