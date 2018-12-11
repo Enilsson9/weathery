@@ -2,6 +2,8 @@ Anax Weather Module (weathery)
 ==================================
 
 
+[![Build Status](https://travis-ci.com/Enilsson9/weathery.svg?branch=master](https://travis-ci.org/Enilsson9/weathery)
+
 You can use this module, together with an Anax installation, to enable a scaffolded Weather report.
 
 
