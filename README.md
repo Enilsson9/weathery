@@ -4,6 +4,10 @@ Anax Weather Module (weathery)
 [![Build Status](https://travis-ci.com/Enilsson9/weathery.svg?branch=master)](https://travis-ci.org/Enilsson9/weathery)
 [![CircleCI](https://circleci.com/gh/Enilsson9/weathery.svg?style=svg)](https://circleci.com/gh/Enilsson9/weathery)
 
+[![Build Status](https://scrutinizer-ci.com/g/Enilsson9/weathery/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Enilsson9/weathery/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Enilsson9/weathery/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Enilsson9/weathery/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Enilsson9/weathery/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Enilsson9/weathery/?branch=master)
+
 You can use this module, together with an Anax installation, to enable a scaffolded Weather report.
 
 
