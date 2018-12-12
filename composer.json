@@ -11,6 +11,7 @@
         }
     },
     "require": {
+        "anax/anax-ramverk1-me": "^1.0.0",
         "anax/anax-cli": "^1.1"
     },
     "require-dev": {
