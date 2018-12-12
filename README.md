@@ -8,6 +8,12 @@ Anax Weather Module (weathery)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Enilsson9/weathery/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Enilsson9/weathery/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/Enilsson9/weathery/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Enilsson9/weathery/?branch=master)
 
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/46d9d7a6fee32c7bcc2d/maintainability)](https://codeclimate.com/github/Enilsson9/weathery/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/46d9d7a6fee32c7bcc2d/test_coverage)](https://codeclimate.com/github/Enilsson9/weathery/test_coverage)
+
+[![SymfonyInsight](https://insight.symfony.com/projects/2b8ae7fd-c551-4483-b6ad-06820c91e807/mini.svg)](https://insight.symfony.com/projects/2b8ae7fd-c551-4483-b6ad-06820c91e807)
+
 You can use this module, together with an Anax installation, to enable a scaffolded Weather report.
 
 
