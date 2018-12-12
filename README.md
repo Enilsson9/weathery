@@ -1,6 +1,8 @@
 Anax Weather Module (weathery)
 ==================================
 
+[![Gitter](https://badges.gitter.im/enilsson9/weathery.svg)](https://gitter.im/enilsson9/weathery?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 [![Build Status](https://travis-ci.com/Enilsson9/weathery.svg?branch=master)](https://travis-ci.org/Enilsson9/weathery)
 [![CircleCI](https://circleci.com/gh/Enilsson9/weathery.svg?style=svg)](https://circleci.com/gh/Enilsson9/weathery)
 
